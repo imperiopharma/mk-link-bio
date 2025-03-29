@@ -7,7 +7,7 @@ interface MatrixCodeRainProps {
 }
 
 const MatrixCodeRain: React.FC<MatrixCodeRainProps> = ({ 
-  opacity = 0.05, 
+  opacity = 0.6, 
   className = '' 
 }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -33,103 +33,136 @@ const MatrixCodeRain: React.FC<MatrixCodeRainProps> = ({
     // Add resize listener
     window.addEventListener('resize', resizeCanvas);
 
-    // Matrix code characters - cyberpunk style
-    const characters = '01234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ<>[]{}|=+*/-_$#@!?アイウエオカキクケコサシスセソタチツテトナニヌネノマミムメモヤユヨラリルレロワヰ';
+    // More realistic terminal text with commands and system data
+    const lines = [
+      "root@mk-code:~# ls -la",
+      "total 284",
+      "drwxr-xr-x  20 root root   4096 Sep 15 17:42 .",
+      "drwxr-xr-x   3 root root   4096 Aug 27 09:10 ..",
+      "-rw-------   1 root root   3574 Sep 10 14:22 .bash_history",
+      "-rw-r--r--   1 root root    570 Jan 31  2010 .bashrc",
+      "drwx------   2 root root   4096 Aug 27 09:11 .cache",
+      "drwxr-xr-x   3 root root   4096 Aug 27 09:25 .config",
+      "drwxr-xr-x   3 root root   4096 Sep 14 12:14 projects",
+      "-rwxr-xr-x   1 root root    185 Sep 15 15:42 deploy.sh",
+      "drwxr-xr-x   5 root root   4096 Sep 10 17:36 docker",
+      "drwxr-xr-x   4 root root   4096 Sep  2 09:12 node_modules",
+      "user@mk-code:~# cd projects",
+      "user@mk-code:~/projects# ls",
+      "client-website-1  client-website-2  e-commerce  landing-page",
+      "user@mk-code:~/projects# git status",
+      "On branch main",
+      "Your branch is up to date with 'origin/main'",
+      "nothing to commit, working tree clean",
+      "user@mk-code:~/projects# npm run build",
+      "> build",
+      "> vite build",
+      "vite v4.3.8 building for production...",
+      "✓ 1270 modules transformed.",
+      "dist/assets/index-5f58c4d7.css   69.87 KiB",
+      "dist/assets/index-8a797b5a.js     2.12 MiB",
+      "user@mk-code:~/projects# sudo systemctl restart nginx",
+      "user@mk-code:~/projects# ps aux | grep node",
+      "root     12450  0.0  0.2 2351716 33548 ?  Ssl  Sep15  0:05 node server.js",
+      "root     15782  0.0  0.0  14428  1080 pts/0 S+   12:35  0:00 grep --color=auto node",
+      "user@mk-code:~/projects# docker ps",
+      "CONTAINER ID   IMAGE          COMMAND                  CREATED        STATUS",
+      "3fa85f6459d7   postgres:13    \"docker-entrypoint.s…\"   3 hours ago    Up 3 hours",
+      "4bb5d82d3e0a   redis:alpine   \"docker-entrypoint.s…\"   3 hours ago    Up 3 hours",
+      "user@mk-code:~/projects# _"
+    ];
+
+    // Font size and spacing for readable terminal text
+    const fontSize = 16;
+    const lineHeight = fontSize * 1.5;
     
-    // Create bigger, more visible characters
-    const fontSize = 24;
+    // Calculate number of lines that fit
+    const totalLines = Math.floor(canvas.height / lineHeight);
     
-    // Fewer columns with wider spacing
-    const columnSpacing = fontSize * 1.5; // Add space between columns
-    const columns = Math.floor(canvas.width / columnSpacing);
+    // Initialize positions array - for scrolling effect
+    let positions: number[] = [];
+    let currentPosition = canvas.height;
     
-    // Array to track the y position of each drop
-    const drops: number[] = [];
-    
-    // Initialize only a few drops - around 5-10 major cascades
-    const numberOfCascades = 8; 
-    const cascadePositions = [];
-    
-    // Distribute cascades evenly across screen width
-    for (let i = 0; i < numberOfCascades; i++) {
-      const position = Math.floor(i * (columns / numberOfCascades)) + 
-                      Math.floor(Math.random() * (columns / numberOfCascades * 0.5));
-      cascadePositions.push(position);
-      drops[position] = Math.random() * -100; // Start at random positions above canvas
+    // Set lines off-screen initially for scrolling up effect
+    for (let i = 0; i < lines.length; i++) {
+      positions.push(currentPosition);
+      currentPosition += lineHeight;
     }
+
+    // How many pixels to move up each frame
+    const scrollSpeed = 0.5;
 
     // Main animation function
     const draw = () => {
       if (!ctx || !canvas) return;
       
-      // Semi-transparent black to create fade effect
-      ctx.fillStyle = `rgba(10, 15, 21, 0.12)`;
+      // Clear canvas with dark background
+      ctx.fillStyle = 'rgba(10, 15, 21, 0.12)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
       
-      // Draw cascades
-      for (let i = 0; i < cascadePositions.length; i++) {
-        const position = cascadePositions[i];
+      // Draw terminal text lines
+      for (let i = 0; i < lines.length; i++) {
+        // Update position
+        positions[i] -= scrollSpeed;
         
-        // Only process active cascade positions
-        if (drops[position] === undefined) continue;
+        // If line moves off-screen, reset to bottom
+        if (positions[i] < -lineHeight && scrollSpeed > 0) {
+          // Move this line to the bottom
+          positions[i] = canvas.height;
+        }
         
-        // Generate a random character
-        const text = characters.charAt(Math.floor(Math.random() * characters.length));
-        
-        if (Math.floor(drops[position]) * fontSize < canvas.height && Math.floor(drops[position]) >= 0) {
-          // Head of the cascade is brighter and larger
+        // Only draw visible lines
+        if (positions[i] < canvas.height && positions[i] > -lineHeight) {
+          const lineText = lines[i];
+          
+          // Color based on line content to mimic terminal
+          if (lineText.includes('user@mk-code') || lineText.includes('root@mk-code')) {
+            // Command prompt
+            ctx.fillStyle = '#00BFFF'; // Bright blue
+            ctx.font = `bold ${fontSize}px 'Courier New', monospace`;
+          } else if (lineText.includes('npm run') || lineText.includes('git ') || 
+                    lineText.includes('docker ') || lineText.includes('sudo ')) {
+            // Commands
+            ctx.fillStyle = '#00BFFF'; // Bright blue
+            ctx.font = `${fontSize}px 'Courier New', monospace`;
+          } else if (lineText.includes('error') || lineText.includes('Error')) {
+            // Errors
+            ctx.fillStyle = '#FF5555'; // Red
+            ctx.font = `${fontSize}px 'Courier New', monospace`;
+          } else {
+            // Output text
+            ctx.fillStyle = '#33C3F0'; // Light blue
+            ctx.font = `${fontSize}px 'Courier New', monospace`;
+          }
+          
+          // Add text shadow for glow effect
+          ctx.shadowColor = '#00BFFF';
+          ctx.shadowBlur = 2;
+          
+          // Draw text
+          ctx.fillText(lineText, 10, positions[i]);
+          
+          // Reset shadow
+          ctx.shadowBlur = 0;
+        }
+      }
+      
+      // Add cursor blink at the last line that's visible
+      const lastVisibleLineIndex = positions.findIndex(pos => pos > 0 && pos < canvas.height);
+      if (lastVisibleLineIndex >= 0 && lines[lastVisibleLineIndex].endsWith('_')) {
+        // Cursor blink effect
+        if (Math.floor(Date.now() / 500) % 2 === 0) {
           ctx.fillStyle = '#00FFFF';
-          ctx.font = `bold ${fontSize * 1.2}px monospace`;
-          ctx.shadowColor = '#00FFFF';
-          ctx.shadowBlur = 15;
-          ctx.fillText(text, position * columnSpacing, Math.floor(drops[position]) * fontSize);
-          
-          // Trail characters are dimmer with longer trails
-          const trailLength = 30; // Longer trail
-          for (let j = 1; j < trailLength; j++) {
-            if (Math.floor(drops[position]) - j >= 0) {
-              // Calculate decreasing opacity for trail
-              const opacity = 1 - (j / trailLength);
-              ctx.fillStyle = `rgba(0, 191, 255, ${opacity})`;
-              ctx.font = `${fontSize}px monospace`;
-              ctx.shadowBlur = 5;
-              
-              // Get a new random character for each position in the trail
-              const trailChar = characters.charAt(Math.floor(Math.random() * characters.length));
-              ctx.fillText(trailChar, position * columnSpacing, (Math.floor(drops[position]) - j) * fontSize);
-            }
-          }
-          
-          // Occasionally spawn a secondary drop to the side
-          if (Math.random() > 0.99) {
-            const newPos = position + (Math.random() > 0.5 ? 1 : -1);
-            if (newPos >= 0 && newPos < columns && !cascadePositions.includes(newPos)) {
-              cascadePositions.push(newPos);
-              drops[newPos] = drops[position] - Math.random() * 10;
-              
-              // Limit total cascades
-              if (cascadePositions.length > numberOfCascades + 3) {
-                const removeIndex = Math.floor(Math.random() * cascadePositions.length);
-                cascadePositions.splice(removeIndex, 1);
-              }
-            }
-          }
+          const cursorY = positions[lastVisibleLineIndex];
+          const textWidth = ctx.measureText(lines[lastVisibleLineIndex]).width;
+          ctx.fillRect(textWidth + 10, cursorY - fontSize, fontSize/2, fontSize);
         }
-        
-        // Move drop down and reset when it reaches the bottom
-        if (drops[position] * fontSize > canvas.height && Math.random() > 0.98) {
-          drops[position] = 0;
-        }
-        
-        // Increment y coordinate - slower speed for more visible effect
-        drops[position] += 0.3;
       }
     };
 
     // Animation loop
-    const interval = setInterval(draw, 35);
+    const interval = setInterval(draw, 30);
 
-    // Cleanup function
     return () => {
       clearInterval(interval);
       window.removeEventListener('resize', resizeCanvas);

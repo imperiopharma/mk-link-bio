@@ -1,66 +1,18 @@
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import ButtonMk from "./ui/ButtonMk";
 import { MessageSquare, Rocket } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
-
-// Terminal Text Animation component
-const TerminalTextAnimation = ({ opacity = 0.6 }: { opacity?: number }) => {
-  const [text, setText] = useState('');
-  const fullText = "MK CODE_\nDeveloping digital solutions\nwith identity_";
-  const [cursorVisible, setCursorVisible] = useState(true);
-
-  useEffect(() => {
-    let currentIndex = 0;
-    let timer: NodeJS.Timeout;
-
-    // Type writer effect
-    const typeText = () => {
-      if (currentIndex < fullText.length) {
-        setText(fullText.substring(0, currentIndex + 1));
-        currentIndex++;
-        timer = setTimeout(typeText, Math.random() * 100 + 30); // Random speed for realistic typing
-      }
-    };
-
-    typeText();
-
-    // Blinking cursor effect
-    const cursorInterval = setInterval(() => {
-      setCursorVisible(prev => !prev);
-    }, 500);
-
-    return () => {
-      clearTimeout(timer);
-      clearInterval(cursorInterval);
-    };
-  }, [fullText]);
-
-  return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      <div 
-        className="w-full h-full flex items-center justify-center"
-        style={{ opacity }}
-      >
-        <pre 
-          className="text-mk-accent font-mono text-xl sm:text-2xl md:text-3xl whitespace-pre"
-          style={{ textShadow: '0 0 8px rgba(0, 191, 255, 0.8)' }}
-        >
-          {text}{cursorVisible ? '_' : ' '}
-        </pre>
-      </div>
-    </div>
-  );
-};
+import MatrixCodeRain from "./MatrixCodeRain";
 
 const Hero = () => {
   const isMobile = useIsMobile();
 
   return (
     <section className="pt-8 pb-8 md:pt-16 md:pb-20 overflow-hidden relative">
-      {/* Terminal Text Animation effect */}
+      {/* Matrix Code Rain effect */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <TerminalTextAnimation opacity={0.6} />
+        <MatrixCodeRain opacity={0.6} />
       </div>
 
       <div className="section-container">
