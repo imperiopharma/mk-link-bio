@@ -120,6 +120,11 @@
     @apply text-white;
   }
   
+  /* Z-index utilities for matrix code rain */
+  .-z-5 {
+    z-index: -5;
+  }
+  
   /* Mobile-specific optimizations */
   @media (max-width: 640px) {
     .animate-fade-up {
