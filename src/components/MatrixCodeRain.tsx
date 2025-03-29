@@ -87,7 +87,7 @@ const MatrixCodeRain: React.FC<MatrixCodeRainProps> = ({
   return (
     <canvas 
       ref={canvasRef} 
-      className={`absolute top-0 left-0 w-full h-full -z-5 ${className}`}
+      className={`absolute top-0 left-0 w-full h-full ${className}`}
       style={{ opacity }}
     />
   );

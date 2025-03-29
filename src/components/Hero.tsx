@@ -11,8 +11,8 @@ const Hero = () => {
   return (
     <section className="pt-8 pb-8 md:pt-16 md:pb-20 overflow-hidden relative">
       {/* Matrix Code Rain effect */}
-      <div className="absolute inset-0 overflow-hidden">
-        <MatrixCodeRain opacity={0.05} />
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <MatrixCodeRain opacity={0.15} />
       </div>
 
       <div className="section-container">
