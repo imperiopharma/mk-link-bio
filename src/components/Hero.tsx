@@ -8,11 +8,11 @@ const Hero = () => {
   const isMobile = useIsMobile();
 
   return (
-    <section className="pt-16 pb-16 md:pt-24 md:pb-32 overflow-hidden relative">
+    <section className="pt-8 pb-8 md:pt-16 md:pb-20 overflow-hidden relative">
       <div className="section-container">
         <div className="relative z-10 max-w-3xl mx-auto text-center">
           {/* Logo com tamanho muito maior */}
-          <div className="flex justify-center mb-8 md:mb-10 animate-fade-in">
+          <div className="flex justify-center mb-6 md:mb-8 animate-fade-in">
             <img
               src="/lovable-uploads/122bf2f3-db17-44f6-a7c6-1bb03f153910.png"
               alt="MK CODE"
