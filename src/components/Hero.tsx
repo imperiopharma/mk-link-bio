@@ -12,7 +12,7 @@ const Hero = () => {
     <section className="pt-8 pb-8 md:pt-16 md:pb-20 overflow-hidden relative">
       {/* Matrix Code Rain effect */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <MatrixCodeRain opacity={0.3} /> {/* Reduced opacity from 0.6 to 0.3 */}
+        <MatrixCodeRain opacity={0.3} /> {/* Mantendo a opacidade reduzida */}
       </div>
 
       <div className="section-container">
@@ -29,10 +29,20 @@ const Hero = () => {
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 leading-tight animate-fade-in">
             Seu negócio, <span className="text-gradient">nossa estrutura.</span>
           </h1>
-          <p className="text-base sm:text-lg md:text-xl text-mk-muted mb-6 md:mb-8 max-w-2xl mx-auto animate-fade-up opacity-0" style={{ animationDelay: "0.3s", animationFillMode: "forwards" }}>
-            Soluções digitais com identidade – pra quem vende pelo WhatsApp, Instagram ou no balcão. <span className="font-semibold text-mk-accent">Construímos qualquer tipo de site ou plataforma sob encomenda.</span>
-          </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 animate-fade-up opacity-0" style={{ animationDelay: "0.6s", animationFillMode: "forwards" }}>
+          
+          {/* Melhorando a legibilidade do parágrafo com um fundo semitransparente e destaque */}
+          <div className="rounded-lg bg-black/40 backdrop-blur-sm p-4 mb-6 md:mb-8">
+            <p className="text-base sm:text-lg md:text-xl text-white mb-0 max-w-2xl mx-auto animate-fade-up opacity-0" 
+               style={{ animationDelay: "0.3s", animationFillMode: "forwards" }}>
+              Soluções digitais com identidade – pra quem vende pelo WhatsApp, Instagram ou no balcão. 
+              <span className="font-semibold text-mk-accent block mt-2">
+                Construímos qualquer tipo de site ou plataforma sob encomenda.
+              </span>
+            </p>
+          </div>
+          
+          <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 animate-fade-up opacity-0" 
+               style={{ animationDelay: "0.6s", animationFillMode: "forwards" }}>
             <ButtonMk 
               variant="primary" 
               size={isMobile ? "md" : "lg"} 
