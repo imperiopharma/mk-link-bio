@@ -80,6 +80,15 @@
     @apply bg-gradient-to-r from-mk-accent to-mk-hover bg-clip-text text-transparent;
   }
   
+  /* Button text and icon color overrides */
+  .btn-mk-primary {
+    @apply text-black;
+  }
+  
+  .btn-mk-primary svg {
+    @apply text-black;
+  }
+  
   /* Mobile-specific optimizations */
   @media (max-width: 640px) {
     .animate-fade-up {

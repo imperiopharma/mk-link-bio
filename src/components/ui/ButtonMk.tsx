@@ -21,9 +21,9 @@ const ButtonMk = ({
   const baseStyles = "inline-flex items-center justify-center rounded-md font-medium transition-all focus:outline-none focus:ring-2 focus:ring-mk-accent/50 disabled:opacity-50";
 
   const variantStyles = {
-    primary: "bg-mk-accent hover:bg-mk-hover text-white shadow-lg shadow-mk-accent/20 hover:shadow-mk-hover/40",
-    secondary: "bg-mk-border hover:bg-mk-border/80 text-white",
-    outline: "bg-transparent border border-mk-border hover:border-mk-accent text-white hover:text-mk-accent",
+    primary: "bg-mk-accent hover:bg-mk-hover text-black font-semibold shadow-lg shadow-mk-accent/20 hover:shadow-mk-hover/40",
+    secondary: "bg-mk-border hover:bg-mk-border/80 text-black font-semibold",
+    outline: "bg-transparent border border-mk-border hover:border-mk-accent text-black hover:text-black font-semibold",
   };
 
   const sizeStyles = {
@@ -42,7 +42,7 @@ const ButtonMk = ({
       )}
       {...props}
     >
-      {icon && <span className="mr-2">{icon}</span>}
+      {icon && <span className="mr-2 text-black">{icon}</span>}
       {children}
     </button>
   );

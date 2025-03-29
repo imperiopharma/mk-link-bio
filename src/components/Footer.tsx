@@ -1,6 +1,7 @@
 
 import React from "react";
 import { Github, Instagram, MessageSquare } from "lucide-react";
+import ButtonMk from "./ui/ButtonMk";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -15,19 +16,26 @@ const Footer = () => {
             className="h-8 sm:h-12 mb-5 sm:mb-6"
           />
           
-          <div className="flex items-center space-x-5 sm:space-x-6 mb-6 sm:mb-8">
-            <a href="#" className="text-mk-muted hover:text-mk-accent transition-colors p-2">
-              <MessageSquare className="w-5 h-5" />
-              <span className="sr-only">WhatsApp</span>
-            </a>
-            <a href="#" className="text-mk-muted hover:text-mk-accent transition-colors p-2">
-              <Instagram className="w-5 h-5" />
-              <span className="sr-only">Instagram</span>
-            </a>
-            <a href="#" className="text-mk-muted hover:text-mk-accent transition-colors p-2">
-              <Github className="w-5 h-5" />
-              <span className="sr-only">GitHub</span>
-            </a>
+          <div className="flex flex-col sm:flex-row items-center gap-4 mb-6 sm:mb-8">
+            <ButtonMk 
+              variant="secondary" 
+              size="sm" 
+              icon={<MessageSquare className="w-4 h-4" />}
+              className="w-full sm:w-auto"
+            >
+              Falar no WhatsApp
+            </ButtonMk>
+            
+            <div className="flex items-center space-x-4 sm:space-x-6 mt-4 sm:mt-0">
+              <a href="#" className="text-mk-muted hover:text-mk-accent transition-colors p-2">
+                <Instagram className="w-5 h-5" />
+                <span className="sr-only">Instagram</span>
+              </a>
+              <a href="#" className="text-mk-muted hover:text-mk-accent transition-colors p-2">
+                <Github className="w-5 h-5" />
+                <span className="sr-only">GitHub</span>
+              </a>
+            </div>
           </div>
           
           <div className="text-center px-4">
