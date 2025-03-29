@@ -8,7 +8,7 @@ const Hero = () => {
   const isMobile = useIsMobile();
 
   return (
-    <section className="pt-28 pb-16 md:pt-40 md:pb-32 overflow-hidden relative">
+    <section className="pt-16 pb-16 md:pt-24 md:pb-32 overflow-hidden relative">
       <div className="section-container">
         <div className="relative z-10 max-w-3xl mx-auto text-center">
           {/* Logo com tamanho muito maior */}
