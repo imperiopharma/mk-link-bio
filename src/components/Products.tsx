@@ -20,6 +20,16 @@ const Products = () => {
       available: true,
     },
     {
+      id: 4,
+      name: "Sites e Páginas Sob Medida",
+      description: "Criação de sites e sistemas personalizados",
+      icon: <Globe className="w-5 h-5 sm:w-6 sm:h-6 text-mk-accent" />,
+      features: ["Sites institucionais", "Landing pages", "Sistemas web"],
+      cta: "Quero criar meu site com a MK CODE",
+      ctaIcon: <Globe className="w-4 h-4" />,
+      available: true,
+    },
+    {
       id: 2,
       name: "ABREVIO",
       description: "Encurtador de link com painel e identidade",
@@ -38,16 +48,6 @@ const Products = () => {
       cta: "Quero ser avisado",
       ctaIcon: <MessageSquare className="w-4 h-4" />,
       available: false,
-    },
-    {
-      id: 4,
-      name: "Sites e Páginas Sob Medida",
-      description: "Criação de sites e sistemas personalizados",
-      icon: <Globe className="w-5 h-5 sm:w-6 sm:h-6 text-mk-accent" />,
-      features: ["Sites institucionais", "Landing pages", "Sistemas web"],
-      cta: "Quero criar meu site com a MK CODE",
-      ctaIcon: <Globe className="w-4 h-4" />,
-      available: true,
     },
   ];
 
@@ -117,3 +117,4 @@ const Products = () => {
 };
 
 export default Products;
+
