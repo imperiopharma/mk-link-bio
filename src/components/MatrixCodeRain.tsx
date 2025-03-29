@@ -81,34 +81,34 @@ const MatrixCodeRain: React.FC<MatrixCodeRainProps> = ({
     
     // Initialize positions array - for scrolling effect
     let positions: number[] = [];
-    let currentPosition = canvas.height;
+    let currentPosition = -canvas.height; // Start positions above the canvas
     
-    // Set lines off-screen initially for scrolling up effect
+    // Set lines to start above the screen for downward scrolling effect
     for (let i = 0; i < lines.length; i++) {
       positions.push(currentPosition);
       currentPosition += lineHeight;
     }
 
-    // How many pixels to move up each frame
-    const scrollSpeed = 0.5;
+    // How many pixels to move down each frame - increased for faster scrolling
+    const scrollSpeed = 1.5; // Increased from 0.5 to 1.5 for faster scrolling
 
     // Main animation function
     const draw = () => {
       if (!ctx || !canvas) return;
       
       // Clear canvas with dark background
-      ctx.fillStyle = 'rgba(10, 15, 21, 0.12)';
+      ctx.fillStyle = 'rgba(10, 15, 21, 0.07)'; // More transparent background
       ctx.fillRect(0, 0, canvas.width, canvas.height);
       
       // Draw terminal text lines
       for (let i = 0; i < lines.length; i++) {
-        // Update position
-        positions[i] -= scrollSpeed;
+        // Update position - positive scrollSpeed moves downward
+        positions[i] += scrollSpeed;
         
-        // If line moves off-screen, reset to bottom
-        if (positions[i] < -lineHeight && scrollSpeed > 0) {
-          // Move this line to the bottom
-          positions[i] = canvas.height;
+        // If line moves off-screen at the bottom, reset to top
+        if (positions[i] > canvas.height && scrollSpeed > 0) {
+          // Move this line to above the top of the screen
+          positions[i] = -lineHeight * 2;
         }
         
         // Only draw visible lines
@@ -118,20 +118,20 @@ const MatrixCodeRain: React.FC<MatrixCodeRainProps> = ({
           // Color based on line content to mimic terminal
           if (lineText.includes('user@mk-code') || lineText.includes('root@mk-code')) {
             // Command prompt
-            ctx.fillStyle = '#00BFFF'; // Bright blue
+            ctx.fillStyle = 'rgba(0, 191, 255, 0.7)'; // Bright blue with transparency
             ctx.font = `bold ${fontSize}px 'Courier New', monospace`;
           } else if (lineText.includes('npm run') || lineText.includes('git ') || 
                     lineText.includes('docker ') || lineText.includes('sudo ')) {
             // Commands
-            ctx.fillStyle = '#00BFFF'; // Bright blue
+            ctx.fillStyle = 'rgba(0, 191, 255, 0.7)'; // Bright blue with transparency
             ctx.font = `${fontSize}px 'Courier New', monospace`;
           } else if (lineText.includes('error') || lineText.includes('Error')) {
             // Errors
-            ctx.fillStyle = '#FF5555'; // Red
+            ctx.fillStyle = 'rgba(255, 85, 85, 0.7)'; // Red with transparency
             ctx.font = `${fontSize}px 'Courier New', monospace`;
           } else {
             // Output text
-            ctx.fillStyle = '#33C3F0'; // Light blue
+            ctx.fillStyle = 'rgba(51, 195, 240, 0.7)'; // Light blue with transparency
             ctx.font = `${fontSize}px 'Courier New', monospace`;
           }
           
@@ -152,7 +152,7 @@ const MatrixCodeRain: React.FC<MatrixCodeRainProps> = ({
       if (lastVisibleLineIndex >= 0 && lines[lastVisibleLineIndex].endsWith('_')) {
         // Cursor blink effect
         if (Math.floor(Date.now() / 500) % 2 === 0) {
-          ctx.fillStyle = '#00FFFF';
+          ctx.fillStyle = 'rgba(0, 255, 255, 0.7)'; // Cyan with transparency
           const cursorY = positions[lastVisibleLineIndex];
           const textWidth = ctx.measureText(lines[lastVisibleLineIndex]).width;
           ctx.fillRect(textWidth + 10, cursorY - fontSize, fontSize/2, fontSize);
