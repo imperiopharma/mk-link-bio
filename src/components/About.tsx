@@ -1,6 +1,7 @@
 
 import React from "react";
 import AnimatedCard from "./ui/AnimatedCard";
+import { Zap, Palette, LayoutList } from "lucide-react";
 
 const About = () => {
   return (
@@ -26,7 +27,7 @@ const About = () => {
           <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="text-center">
               <div className="w-16 h-16 bg-mk-border/30 rounded-full flex items-center justify-center mx-auto mb-3">
-                <div className="w-10 h-10 bg-gradient-to-br from-mk-accent to-mk-hover rounded-full"></div>
+                <Zap className="w-8 h-8 text-mk-accent" />
               </div>
               <h3 className="font-semibold mb-1">Automação</h3>
               <p className="text-sm text-mk-muted">Processos otimizados</p>
@@ -34,7 +35,7 @@ const About = () => {
             
             <div className="text-center">
               <div className="w-16 h-16 bg-mk-border/30 rounded-full flex items-center justify-center mx-auto mb-3">
-                <div className="w-10 h-10 bg-gradient-to-br from-mk-accent to-mk-hover rounded-full"></div>
+                <Palette className="w-8 h-8 text-mk-accent" />
               </div>
               <h3 className="font-semibold mb-1">Identidade</h3>
               <p className="text-sm text-mk-muted">Visual personalizado</p>
@@ -42,7 +43,7 @@ const About = () => {
             
             <div className="text-center">
               <div className="w-16 h-16 bg-mk-border/30 rounded-full flex items-center justify-center mx-auto mb-3">
-                <div className="w-10 h-10 bg-gradient-to-br from-mk-accent to-mk-hover rounded-full"></div>
+                <LayoutList className="w-8 h-8 text-mk-accent" />
               </div>
               <h3 className="font-semibold mb-1">Simplicidade</h3>
               <p className="text-sm text-mk-muted">Fácil de usar</p>
