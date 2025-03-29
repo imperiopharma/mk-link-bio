@@ -22,7 +22,8 @@ const Index = () => {
           // Quando um elemento entra na viewport
           if (entry.isIntersecting) {
             entry.target.classList.add("visible");
-            entry.target.style.opacity = "1";
+            // Corrigindo o erro: fazendo cast para HTMLElement antes de acessar style
+            (entry.target as HTMLElement).style.opacity = "1";
             observer.unobserve(entry.target);
           }
         });
