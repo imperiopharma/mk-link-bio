@@ -28,11 +28,11 @@ const Footer = () => {
             </ButtonMk>
             
             <div className="flex items-center space-x-4 sm:space-x-6 mt-4 sm:mt-0">
-              <a href="#" className="text-mk-muted hover:text-mk-accent transition-colors p-2 bg-mk-border/30 rounded-full">
+              <a href="#" className="bg-mk-border/80 hover:bg-mk-accent text-white hover:text-black transition-colors p-2 rounded-full">
                 <Instagram className="w-5 h-5" />
                 <span className="sr-only">Instagram</span>
               </a>
-              <a href="#" className="text-mk-muted hover:text-mk-accent transition-colors p-2 bg-mk-border/30 rounded-full">
+              <a href="#" className="bg-mk-border/80 hover:bg-mk-accent text-white hover:text-black transition-colors p-2 rounded-full">
                 <Github className="w-5 h-5" />
                 <span className="sr-only">GitHub</span>
               </a>
@@ -40,10 +40,10 @@ const Footer = () => {
           </div>
           
           <div className="text-center px-4">
-            <p className="text-xs sm:text-sm text-mk-muted">
+            <p className="text-xs sm:text-sm text-white">
               &copy; {currentYear} MK CODE. Todos os direitos reservados.
             </p>
-            <p className="text-xs text-mk-muted/60 mt-2">
+            <p className="text-xs text-white/80 mt-2">
               Soluções digitais com identidade para seu negócio.
             </p>
           </div>

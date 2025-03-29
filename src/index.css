@@ -106,6 +106,19 @@
   button:hover {
     @apply transition-all duration-300;
   }
+
+  /* Dialog styling fixes */
+  .bg-background {
+    @apply bg-mk-bg;
+  }
+
+  .bg-accent {
+    @apply bg-mk-accent;
+  }
+
+  .text-muted-foreground {
+    @apply text-white;
+  }
   
   /* Mobile-specific optimizations */
   @media (max-width: 640px) {

@@ -46,13 +46,21 @@ const ButtonMk = ({
     >
       {icon && iconPosition === "left" && (
         <span className="mr-2">
-          {icon}
+          {React.cloneElement(icon as React.ReactElement, { 
+            className: cn((icon as React.ReactElement).props.className, 
+            variant === "primary" ? "text-black" : "text-white",
+            variant === "outline" && "group-hover:text-black")
+          })}
         </span>
       )}
       {children}
       {icon && iconPosition === "right" && (
         <span className="ml-2">
-          {icon}
+          {React.cloneElement(icon as React.ReactElement, { 
+            className: cn((icon as React.ReactElement).props.className, 
+            variant === "primary" ? "text-black" : "text-white",
+            variant === "outline" && "group-hover:text-black")
+          })}
         </span>
       )}
     </button>
