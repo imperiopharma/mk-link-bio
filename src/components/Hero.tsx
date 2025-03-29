@@ -16,7 +16,7 @@ const Hero = () => {
             <img
               src="/lovable-uploads/122bf2f3-db17-44f6-a7c6-1bb03f153910.png"
               alt="MK CODE"
-              className="h-40 sm:h-52 md:h-64 lg:h-72 w-auto"
+              className="h-52 sm:h-52 md:h-64 lg:h-72 w-auto"
             />
           </div>
           
