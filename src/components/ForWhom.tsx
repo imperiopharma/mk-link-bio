@@ -44,6 +44,7 @@ const ForWhom = () => {
         <AnimatedCard 
           className="max-w-2xl mx-auto mt-12 text-center py-8 animate-fade-up opacity-0" 
           style={{ animationDelay: "0.6s", animationFillMode: "forwards" }}
+          glowEffect={true}
         >
           <p className="text-lg mb-2">
             Você não se encaixou nessa lista, mas procura algum tipo de automação?
@@ -54,9 +55,9 @@ const ForWhom = () => {
         </AnimatedCard>
       </div>
 
-      {/* Background elements */}
-      <div className="absolute top-40 right-10 w-40 h-40 bg-mk-accent/5 rounded-full blur-[60px]"></div>
-      <div className="absolute bottom-40 left-10 w-40 h-40 bg-mk-accent/5 rounded-full blur-[60px]"></div>
+      {/* Background elements - ajustados para não aparecerem como círculos vazios */}
+      <div className="absolute top-40 right-10 w-40 h-40 bg-mk-accent/10 rounded-full blur-[60px]"></div>
+      <div className="absolute bottom-40 left-10 w-40 h-40 bg-mk-accent/10 rounded-full blur-[60px]"></div>
     </section>
   );
 };
