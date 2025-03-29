@@ -33,15 +33,29 @@ const MatrixCodeRain: React.FC<MatrixCodeRainProps> = ({
     // Add resize listener
     window.addEventListener('resize', resizeCanvas);
 
-    // Matrix code characters - using a mix of katakana, numbers, and symbols
+    // Matrix code characters - cyberpunk style
     const characters = '01234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ<>[]{}|=+*/-_$#@!?アイウエオカキクケコサシスセソタチツテトナニヌネノマミムメモヤユヨラリルレロワヰ';
-    const fontSize = 16;
-    const columns = Math.floor(canvas.width / fontSize);
+    
+    // Create bigger, more visible characters
+    const fontSize = 24;
+    
+    // Fewer columns with wider spacing
+    const columnSpacing = fontSize * 1.5; // Add space between columns
+    const columns = Math.floor(canvas.width / columnSpacing);
     
     // Array to track the y position of each drop
     const drops: number[] = [];
-    for (let i = 0; i < columns; i++) {
-      drops[i] = Math.random() * -100; // Start drops at random positions above the canvas
+    
+    // Initialize only a few drops - around 5-10 major cascades
+    const numberOfCascades = 8; 
+    const cascadePositions = [];
+    
+    // Distribute cascades evenly across screen width
+    for (let i = 0; i < numberOfCascades; i++) {
+      const position = Math.floor(i * (columns / numberOfCascades)) + 
+                      Math.floor(Math.random() * (columns / numberOfCascades * 0.5));
+      cascadePositions.push(position);
+      drops[position] = Math.random() * -100; // Start at random positions above canvas
     }
 
     // Main animation function
@@ -49,47 +63,66 @@ const MatrixCodeRain: React.FC<MatrixCodeRainProps> = ({
       if (!ctx || !canvas) return;
       
       // Semi-transparent black to create fade effect
-      ctx.fillStyle = `rgba(10, 15, 21, 0.1)`;
+      ctx.fillStyle = `rgba(10, 15, 21, 0.12)`;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
       
-      // Random characters with different brightnesses
-      for (let i = 0; i < drops.length; i++) {
+      // Draw cascades
+      for (let i = 0; i < cascadePositions.length; i++) {
+        const position = cascadePositions[i];
+        
+        // Only process active cascade positions
+        if (drops[position] === undefined) continue;
+        
         // Generate a random character
         const text = characters.charAt(Math.floor(Math.random() * characters.length));
         
-        // Make first character brighter for "head" effect
-        if (Math.floor(drops[i]) * fontSize < canvas.height && Math.floor(drops[i]) >= 0) {
-          // Head of the drop is brighter
+        if (Math.floor(drops[position]) * fontSize < canvas.height && Math.floor(drops[position]) >= 0) {
+          // Head of the cascade is brighter and larger
           ctx.fillStyle = '#00FFFF';
-          ctx.font = `bold ${fontSize}px monospace`;
+          ctx.font = `bold ${fontSize * 1.2}px monospace`;
           ctx.shadowColor = '#00FFFF';
-          ctx.shadowBlur = 10;
-          ctx.fillText(text, i * fontSize, Math.floor(drops[i]) * fontSize);
+          ctx.shadowBlur = 15;
+          ctx.fillText(text, position * columnSpacing, Math.floor(drops[position]) * fontSize);
           
-          // Trail characters are dimmer
-          const trailLength = 20;
+          // Trail characters are dimmer with longer trails
+          const trailLength = 30; // Longer trail
           for (let j = 1; j < trailLength; j++) {
-            if (Math.floor(drops[i]) - j >= 0) {
+            if (Math.floor(drops[position]) - j >= 0) {
               // Calculate decreasing opacity for trail
               const opacity = 1 - (j / trailLength);
               ctx.fillStyle = `rgba(0, 191, 255, ${opacity})`;
-              ctx.font = `${fontSize - 1}px monospace`;
-              ctx.shadowBlur = 2;
+              ctx.font = `${fontSize}px monospace`;
+              ctx.shadowBlur = 5;
               
               // Get a new random character for each position in the trail
               const trailChar = characters.charAt(Math.floor(Math.random() * characters.length));
-              ctx.fillText(trailChar, i * fontSize, (Math.floor(drops[i]) - j) * fontSize);
+              ctx.fillText(trailChar, position * columnSpacing, (Math.floor(drops[position]) - j) * fontSize);
+            }
+          }
+          
+          // Occasionally spawn a secondary drop to the side
+          if (Math.random() > 0.99) {
+            const newPos = position + (Math.random() > 0.5 ? 1 : -1);
+            if (newPos >= 0 && newPos < columns && !cascadePositions.includes(newPos)) {
+              cascadePositions.push(newPos);
+              drops[newPos] = drops[position] - Math.random() * 10;
+              
+              // Limit total cascades
+              if (cascadePositions.length > numberOfCascades + 3) {
+                const removeIndex = Math.floor(Math.random() * cascadePositions.length);
+                cascadePositions.splice(removeIndex, 1);
+              }
             }
           }
         }
         
         // Move drop down and reset when it reaches the bottom
-        if (drops[i] * fontSize > canvas.height && Math.random() > 0.98) {
-          drops[i] = 0;
+        if (drops[position] * fontSize > canvas.height && Math.random() > 0.98) {
+          drops[position] = 0;
         }
         
-        // Increment y coordinate
-        drops[i] += 0.5;
+        // Increment y coordinate - slower speed for more visible effect
+        drops[position] += 0.3;
       }
     };
 
