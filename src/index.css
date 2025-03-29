@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Sora:wght@300;400;600;700&display=swap');
 
 @tailwind base;
@@ -90,15 +91,20 @@
   
   /* Outline variant specific styles */
   button[class*="bg-transparent"] {
-    @apply text-white hover:text-black;
+    @apply text-white hover:text-black transition-colors duration-300;
   }
   
   button[class*="bg-transparent"] svg {
-    @apply text-white;
+    @apply text-white transition-colors duration-300;
   }
   
   button[class*="bg-transparent"]:hover svg {
     @apply text-black;
+  }
+  
+  /* Ensure legibility during hover transitions */
+  button:hover {
+    @apply transition-all duration-300;
   }
   
   /* Mobile-specific optimizations */

@@ -25,7 +25,7 @@ const ButtonMk = ({
   const variantStyles = {
     primary: "bg-mk-accent hover:bg-mk-hover text-black font-semibold shadow-lg shadow-mk-accent/20 hover:shadow-mk-hover/40",
     secondary: "bg-mk-border hover:bg-mk-border/80 text-black font-semibold",
-    outline: "bg-transparent border border-mk-border hover:border-mk-accent text-white hover:text-black font-semibold",
+    outline: "bg-transparent border border-mk-border hover:bg-mk-accent/90 text-white hover:text-black font-semibold",
   };
 
   const sizeStyles = {
