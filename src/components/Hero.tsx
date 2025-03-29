@@ -15,7 +15,7 @@ const Hero = () => {
             Seu negócio, <span className="text-gradient">nossa estrutura.</span>
           </h1>
           <p className="text-base sm:text-lg md:text-xl text-mk-muted mb-6 md:mb-8 max-w-2xl mx-auto animate-fade-up opacity-0" style={{ animationDelay: "0.3s", animationFillMode: "forwards" }}>
-            Soluções digitais com identidade – pra quem vende pelo WhatsApp, Instagram ou no balcão.
+            Soluções digitais com identidade – pra quem vende pelo WhatsApp, Instagram ou no balcão. <span className="font-semibold text-mk-accent">Construímos qualquer tipo de site ou plataforma sob encomenda.</span>
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 animate-fade-up opacity-0" style={{ animationDelay: "0.6s", animationFillMode: "forwards" }}>
             <ButtonMk 
