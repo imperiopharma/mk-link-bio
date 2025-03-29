@@ -11,12 +11,12 @@ const Hero = () => {
     <section className="pt-28 pb-16 md:pt-40 md:pb-32 overflow-hidden relative">
       <div className="section-container">
         <div className="relative z-10 max-w-3xl mx-auto text-center">
-          {/* Logo added to Hero section */}
-          <div className="flex justify-center mb-6 md:mb-8 animate-fade-in">
+          {/* Logo com tamanho muito maior */}
+          <div className="flex justify-center mb-8 md:mb-10 animate-fade-in">
             <img
               src="/lovable-uploads/122bf2f3-db17-44f6-a7c6-1bb03f153910.png"
               alt="MK CODE"
-              className="h-16 sm:h-20 md:h-24 w-auto"
+              className="h-32 sm:h-40 md:h-48 lg:h-56 w-auto"
             />
           </div>
           
