@@ -18,20 +18,21 @@ const Footer = () => {
           
           <div className="flex flex-col sm:flex-row items-center gap-4 mb-6 sm:mb-8">
             <ButtonMk 
-              variant="secondary" 
+              variant="primary" 
               size="sm" 
               icon={<MessageSquare className="w-4 h-4" />}
               className="w-full sm:w-auto"
+              onClick={() => window.open("https://wa.me/5500000000000", "_blank")}
             >
               Falar no WhatsApp
             </ButtonMk>
             
             <div className="flex items-center space-x-4 sm:space-x-6 mt-4 sm:mt-0">
-              <a href="#" className="text-mk-muted hover:text-mk-accent transition-colors p-2">
+              <a href="#" className="text-mk-muted hover:text-mk-accent transition-colors p-2 bg-mk-border/30 rounded-full">
                 <Instagram className="w-5 h-5" />
                 <span className="sr-only">Instagram</span>
               </a>
-              <a href="#" className="text-mk-muted hover:text-mk-accent transition-colors p-2">
+              <a href="#" className="text-mk-muted hover:text-mk-accent transition-colors p-2 bg-mk-border/30 rounded-full">
                 <Github className="w-5 h-5" />
                 <span className="sr-only">GitHub</span>
               </a>
