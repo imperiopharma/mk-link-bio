@@ -36,14 +36,14 @@ const Products = () => {
   ];
 
   return (
-    <section id="products" className="py-20 md:py-24 bg-gradient-to-b from-mk-bg to-mk-bg/95 relative">
+    <section id="products" className="py-12 md:py-16 bg-gradient-to-b from-mk-bg to-mk-bg/95 relative">
       <div className="section-container">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-3">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold mb-3 animate-fade-up opacity-0" style={{ animationFillMode: "forwards" }}>
             Nossos <span className="text-gradient">Produtos</span>
           </h2>
           <div className="w-20 h-1 bg-gradient-to-r from-mk-accent to-mk-hover mx-auto rounded-full mb-4"></div>
-          <p className="text-mk-muted max-w-xl mx-auto">
+          <p className="text-mk-muted max-w-xl mx-auto animate-fade-up opacity-0" style={{ animationDelay: "0.2s", animationFillMode: "forwards" }}>
             Ferramentas práticas que elevam seu negócio ao próximo nível
           </p>
         </div>
@@ -53,7 +53,7 @@ const Products = () => {
             <div 
               key={product.id} 
               className="animate-fade-up opacity-0" 
-              style={{ animationDelay: `${0.2 * index}s`, animationFillMode: "forwards" }}
+              style={{ animationDelay: `${0.3 + 0.15 * index}s`, animationFillMode: "forwards" }}
             >
               <AnimatedCard 
                 glowEffect={true} 
@@ -93,7 +93,7 @@ const Products = () => {
         </div>
       </div>
 
-      {/* Background elements */}
+      {/* Elementos de fundo */}
       <div className="absolute -bottom-10 left-0 w-full h-20 bg-gradient-to-t from-mk-bg to-transparent"></div>
     </section>
   );

@@ -14,14 +14,14 @@ const ForWhom = () => {
   ];
 
   return (
-    <section id="for-whom" className="py-20 md:py-24 relative">
+    <section id="for-whom" className="py-12 md:py-16 relative">
       <div className="section-container">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-3">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold mb-3 animate-fade-up opacity-0" style={{ animationFillMode: "forwards" }}>
             Para <span className="text-gradient">quem é</span>
           </h2>
           <div className="w-20 h-1 bg-gradient-to-r from-mk-accent to-mk-hover mx-auto rounded-full mb-4"></div>
-          <p className="text-mk-muted max-w-xl mx-auto">
+          <p className="text-mk-muted max-w-xl mx-auto animate-fade-up opacity-0" style={{ animationDelay: "0.2s", animationFillMode: "forwards" }}>
             Soluções adaptadas para diversos perfis de empreendedores
           </p>
         </div>
@@ -31,9 +31,9 @@ const ForWhom = () => {
             <div 
               key={index}
               className="animate-fade-up opacity-0"
-              style={{ animationDelay: `${0.1 * index}s`, animationFillMode: "forwards" }}
+              style={{ animationDelay: `${0.2 + 0.1 * index}s`, animationFillMode: "forwards" }}
             >
-              <AnimatedCard className="flex items-start">
+              <AnimatedCard className="flex items-start" hoverEffect={true}>
                 <CheckCircle className="w-5 h-5 text-mk-accent mr-3 mt-0.5 flex-shrink-0" />
                 <p>{profile}</p>
               </AnimatedCard>
@@ -43,7 +43,7 @@ const ForWhom = () => {
 
         <AnimatedCard 
           className="max-w-2xl mx-auto mt-12 text-center py-8 animate-fade-up opacity-0" 
-          style={{ animationDelay: "0.6s", animationFillMode: "forwards" }}
+          style={{ animationDelay: "0.8s", animationFillMode: "forwards" }}
           glowEffect={true}
         >
           <p className="text-lg mb-2">
@@ -55,9 +55,9 @@ const ForWhom = () => {
         </AnimatedCard>
       </div>
 
-      {/* Background elements - ajustados para não aparecerem como círculos vazios */}
-      <div className="absolute top-40 right-10 w-40 h-40 bg-mk-accent/10 rounded-full blur-[60px]"></div>
-      <div className="absolute bottom-40 left-10 w-40 h-40 bg-mk-accent/10 rounded-full blur-[60px]"></div>
+      {/* Elementos de fundo com opacidade melhorada */}
+      <div className="absolute top-40 right-10 w-40 h-40 bg-mk-accent/20 rounded-full blur-[60px]"></div>
+      <div className="absolute bottom-40 left-10 w-40 h-40 bg-mk-accent/20 rounded-full blur-[60px]"></div>
     </section>
   );
 };

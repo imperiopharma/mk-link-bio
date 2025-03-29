@@ -43,14 +43,14 @@ const Differentials = () => {
   ];
 
   return (
-    <section id="differentials" className="py-20 md:py-24 bg-gradient-to-b from-mk-bg/95 to-mk-bg relative">
+    <section id="differentials" className="py-12 md:py-16 bg-gradient-to-b from-mk-bg/95 to-mk-bg relative">
       <div className="section-container">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-3">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold mb-3 animate-fade-up opacity-0" style={{ animationFillMode: "forwards" }}>
             Nossos <span className="text-gradient">Diferenciais</span>
           </h2>
           <div className="w-20 h-1 bg-gradient-to-r from-mk-accent to-mk-hover mx-auto rounded-full mb-4"></div>
-          <p className="text-mk-muted max-w-xl mx-auto">
+          <p className="text-mk-muted max-w-xl mx-auto animate-fade-up opacity-0" style={{ animationDelay: "0.2s", animationFillMode: "forwards" }}>
             O que torna a MK CODE a parceira ideal para seu negócio
           </p>
         </div>
@@ -60,10 +60,10 @@ const Differentials = () => {
             <div 
               key={index}
               className="animate-fade-up opacity-0"
-              style={{ animationDelay: `${0.1 * index}s`, animationFillMode: "forwards" }}
+              style={{ animationDelay: `${0.3 + 0.08 * index}s`, animationFillMode: "forwards" }}
             >
               <AnimatedCard 
-                className="h-full" 
+                className="h-full transform transition-transform duration-300 hover:-translate-y-2" 
                 hoverEffect={true}
               >
                 <div className="flex items-start">
@@ -81,7 +81,7 @@ const Differentials = () => {
         </div>
       </div>
 
-      {/* Background elements */}
+      {/* Elementos de fundo */}
       <div className="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-mk-bg to-transparent"></div>
     </section>
   );
