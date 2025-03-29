@@ -1,6 +1,6 @@
 
 import React from "react";
-import { ShoppingBag, Link, MessageSquare } from "lucide-react";
+import { ShoppingBag, Link, MessageSquare, ArrowRight } from "lucide-react";
 import AnimatedCard from "./ui/AnimatedCard";
 import ButtonMk from "./ui/ButtonMk";
 import { useIsMobile } from "@/hooks/use-mobile";
@@ -16,6 +16,7 @@ const Products = () => {
       icon: <ShoppingBag className="w-5 h-5 sm:w-6 sm:h-6 text-mk-accent" />,
       features: ["Loja virtual", "Catálogo digital", "Pedidos pelo WhatsApp"],
       cta: "Quero uma loja digital",
+      ctaIcon: <ShoppingBag className="w-4 h-4" />,
       available: true,
     },
     {
@@ -25,6 +26,7 @@ const Products = () => {
       icon: <Link className="w-5 h-5 sm:w-6 sm:h-6 text-mk-accent" />,
       features: ["Domínio: abrev.io", "Links personalizados", "Estatísticas"],
       cta: "Conhecer o abrev.io",
+      ctaIcon: <Link className="w-4 h-4" />,
       available: true,
     },
     {
@@ -34,6 +36,7 @@ const Products = () => {
       icon: <MessageSquare className="w-5 h-5 sm:w-6 sm:h-6 text-mk-accent" />,
       features: ["Chatbot", "Respostas automáticas", "Fluxos de atendimento"],
       cta: "Quero ser avisado",
+      ctaIcon: <MessageSquare className="w-4 h-4" />,
       available: false,
     },
   ];
@@ -86,6 +89,7 @@ const Products = () => {
                     variant={product.available ? "primary" : "outline"} 
                     size="sm"
                     className="w-full text-xs sm:text-sm"
+                    icon={product.ctaIcon}
                   >
                     {product.cta}
                   </ButtonMk>

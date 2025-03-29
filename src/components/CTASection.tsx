@@ -1,7 +1,7 @@
 
 import React from "react";
 import ButtonMk from "./ui/ButtonMk";
-import { MessageSquare } from "lucide-react";
+import { MessageSquare, ArrowRight } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { 
   Dialog,
@@ -51,6 +51,7 @@ const CTASection = () => {
                     icon={<MessageSquare className="w-4 h-4" />}
                     onClick={() => window.open("https://wa.me/5500000000000", "_blank")}
                     className="w-full"
+                    iconPosition="left"
                   >
                     Iniciar conversa
                   </ButtonMk>

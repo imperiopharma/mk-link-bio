@@ -8,6 +8,7 @@ interface ButtonMkProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
   className?: string;
   icon?: React.ReactNode;
+  iconPosition?: "left" | "right";
 }
 
 const ButtonMk = ({
@@ -16,6 +17,7 @@ const ButtonMk = ({
   children,
   className,
   icon,
+  iconPosition = "left",
   ...props
 }: ButtonMkProps) => {
   const baseStyles = "inline-flex items-center justify-center rounded-md font-medium transition-all focus:outline-none focus:ring-2 focus:ring-mk-accent/50 disabled:opacity-50";
@@ -42,8 +44,13 @@ const ButtonMk = ({
       )}
       {...props}
     >
-      {icon && <span className="mr-2 text-black">{icon}</span>}
+      {icon && iconPosition === "left" && (
+        <span className="mr-2 text-black">{icon}</span>
+      )}
       {children}
+      {icon && iconPosition === "right" && (
+        <span className="ml-2 text-black">{icon}</span>
+      )}
     </button>
   );
 };

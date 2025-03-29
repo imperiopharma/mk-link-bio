@@ -1,7 +1,7 @@
 
 import React from "react";
 import ButtonMk from "./ui/ButtonMk";
-import { MessageSquare } from "lucide-react";
+import { MessageSquare, Rocket } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 
 const Hero = () => {
@@ -18,7 +18,12 @@ const Hero = () => {
             Soluções digitais com identidade – pra quem vende pelo WhatsApp, Instagram ou no balcão.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 animate-fade-up opacity-0" style={{ animationDelay: "0.6s", animationFillMode: "forwards" }}>
-            <ButtonMk variant="primary" size={isMobile ? "md" : "lg"} className="w-full sm:w-auto">
+            <ButtonMk 
+              variant="primary" 
+              size={isMobile ? "md" : "lg"} 
+              className="w-full sm:w-auto"
+              icon={<Rocket className="w-4 h-4" />}
+            >
               Quero minha estrutura digital
             </ButtonMk>
             <ButtonMk 
