@@ -22,13 +22,13 @@ const Index = () => {
           // Quando um elemento entra na viewport
           if (entry.isIntersecting) {
             entry.target.classList.add("visible");
-            // Corrigindo o erro: fazendo cast para HTMLElement antes de acessar style
+            // Cast para HTMLElement para acessar style
             (entry.target as HTMLElement).style.opacity = "1";
             observer.unobserve(entry.target);
           }
         });
       },
-      { threshold: 0.15, rootMargin: "0px 0px -100px 0px" }
+      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
     );
 
     // Seleciona todos os elementos com animação de fade-up
@@ -52,13 +52,13 @@ const Index = () => {
       <div className="relative">
         <div className="w-full h-0.5 bg-gradient-to-r from-transparent via-mk-border/20 to-transparent"></div>
         <About />
-        <div className="w-full h-0.5 bg-gradient-to-r from-transparent via-mk-border/20 to-transparent mb-1"></div>
+        <div className="w-full h-0.5 bg-gradient-to-r from-transparent via-mk-border/20 to-transparent"></div>
         <Products />
-        <div className="w-full h-0.5 bg-gradient-to-r from-transparent via-mk-border/20 to-transparent mb-1"></div>
+        <div className="w-full h-0.5 bg-gradient-to-r from-transparent via-mk-border/20 to-transparent"></div>
         <ForWhom />
-        <div className="w-full h-0.5 bg-gradient-to-r from-transparent via-mk-border/20 to-transparent mb-1"></div>
+        <div className="w-full h-0.5 bg-gradient-to-r from-transparent via-mk-border/20 to-transparent"></div>
         <Differentials />
-        <div className="w-full h-0.5 bg-gradient-to-r from-transparent via-mk-border/20 to-transparent mb-1"></div>
+        <div className="w-full h-0.5 bg-gradient-to-r from-transparent via-mk-border/20 to-transparent"></div>
         <CTASection />
       </div>
       <Footer />

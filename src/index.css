@@ -50,10 +50,16 @@
 
   body {
     @apply bg-mk-bg text-mk-text font-sans;
+    -webkit-tap-highlight-color: transparent;
   }
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-sora font-semibold;
+  }
+  
+  /* Improves tap targets on mobile */
+  button, a {
+    @apply outline-none focus-visible:ring-2 focus-visible:ring-mk-accent/70;
   }
 }
 
@@ -67,10 +73,39 @@
   }
 
   .section-container {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-16;
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10 md:py-16;
   }
 
   .text-gradient {
     @apply bg-gradient-to-r from-mk-accent to-mk-hover bg-clip-text text-transparent;
+  }
+  
+  /* Mobile-specific optimizations */
+  @media (max-width: 640px) {
+    .animate-fade-up {
+      animation-duration: 0.6s;
+    }
+    
+    .section-container {
+      @apply py-6;
+    }
+  }
+}
+
+/* Improved scroll behaviors for mobile */
+@media (max-width: 640px) {
+  html {
+    scroll-padding-top: 80px;
+  }
+  
+  .scroll-smooth-mobile {
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Touch-friendly animations */
+@media (hover: none) {
+  .hover\:scale-105, .hover\:-translate-y-2 {
+    transform: none !important;
   }
 }

@@ -2,10 +2,12 @@
 import React, { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import ButtonMk from "./ui/ButtonMk";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -41,7 +43,7 @@ const Navbar = () => {
               <img
                 src="/lovable-uploads/122bf2f3-db17-44f6-a7c6-1bb03f153910.png"
                 alt="MK CODE"
-                className="h-10 w-auto"
+                className="h-8 sm:h-10 w-auto"
               />
             </a>
           </div>
@@ -84,11 +86,13 @@ const Navbar = () => {
               type="button"
               onClick={toggleMenu}
               className="bg-mk-border/30 rounded-md p-2 text-mk-muted hover:text-mk-text"
+              aria-expanded={isMenuOpen}
+              aria-label="Toggle menu"
             >
               {isMenuOpen ? (
-                <X className="h-6 w-6" />
+                <X className="h-5 w-5" />
               ) : (
-                <Menu className="h-6 w-6" />
+                <Menu className="h-5 w-5" />
               )}
             </button>
           </div>
@@ -96,7 +100,7 @@ const Navbar = () => {
       </div>
 
       {isMenuOpen && (
-        <div className="md:hidden bg-mk-bg border-t border-mk-border/50">
+        <div className="md:hidden bg-mk-bg/95 backdrop-blur-md border-t border-mk-border/50 shadow-lg">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             <a
               href="#about"
