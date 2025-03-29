@@ -1,8 +1,17 @@
 
 import React from "react";
-import { CheckCircle } from "lucide-react";
+import { CheckCircle, MessageSquare } from "lucide-react";
 import AnimatedCard from "./ui/AnimatedCard";
+import ButtonMk from "./ui/ButtonMk";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { 
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 const ForWhom = () => {
   const isMobile = useIsMobile();
@@ -49,12 +58,46 @@ const ForWhom = () => {
           style={{ animationDelay: "0.8s", animationFillMode: "forwards" }}
           glowEffect={true}
         >
-          <p className="text-base sm:text-lg mb-2">
+          <p className="text-base sm:text-lg mb-3">
             Você não se encaixou nessa lista, mas procura algum tipo de automação?
           </p>
-          <p className="text-mk-accent font-medium text-sm sm:text-base">
+          <p className="text-mk-accent font-medium text-sm sm:text-base mb-5">
             Fala com a gente. A gente cria junto, do seu jeito.
           </p>
+          
+          <Dialog>
+            <DialogTrigger asChild>
+              <ButtonMk 
+                variant="primary" 
+                size={isMobile ? "sm" : "md"}
+                icon={<MessageSquare className="w-4 h-4" />}
+                className="mx-auto animate-bounce-subtle"
+              >
+                Falar com a MK CODE
+              </ButtonMk>
+            </DialogTrigger>
+            <DialogContent className="sm:max-w-md">
+              <DialogHeader>
+                <DialogTitle>Entre em contato</DialogTitle>
+                <DialogDescription>
+                  Estamos prontos para ajudar seu negócio a crescer.
+                </DialogDescription>
+              </DialogHeader>
+              <div className="flex flex-col gap-4 py-4">
+                <p className="text-sm text-mk-muted">
+                  Clique no botão abaixo para iniciar uma conversa pelo WhatsApp:
+                </p>
+                <ButtonMk 
+                  variant="primary"
+                  icon={<MessageSquare className="w-4 h-4" />}
+                  onClick={() => window.open("https://wa.me/5500000000000", "_blank")}
+                  className="w-full"
+                >
+                  Iniciar conversa
+                </ButtonMk>
+              </div>
+            </DialogContent>
+          </Dialog>
         </AnimatedCard>
       </div>
 
