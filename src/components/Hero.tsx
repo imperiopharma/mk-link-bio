@@ -11,6 +11,15 @@ const Hero = () => {
     <section className="pt-28 pb-16 md:pt-40 md:pb-32 overflow-hidden relative">
       <div className="section-container">
         <div className="relative z-10 max-w-3xl mx-auto text-center">
+          {/* Logo added to Hero section */}
+          <div className="flex justify-center mb-6 md:mb-8 animate-fade-in">
+            <img
+              src="/lovable-uploads/122bf2f3-db17-44f6-a7c6-1bb03f153910.png"
+              alt="MK CODE"
+              className="h-16 sm:h-20 md:h-24 w-auto"
+            />
+          </div>
+          
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 leading-tight animate-fade-in">
             Seu negócio, <span className="text-gradient">nossa estrutura.</span>
           </h1>
