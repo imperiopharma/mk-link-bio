@@ -33,9 +33,9 @@ const MatrixCodeRain: React.FC<MatrixCodeRainProps> = ({
     // Add resize listener
     window.addEventListener('resize', resizeCanvas);
 
-    // Matrix code characters (using tech-related characters)
-    const characters = '01アイウエオカキクケコサシスセソタチツテトナニヌネノマミムメモヤユヨラリルレロワヰヱヲ';
-    const fontSize = 14;
+    // Matrix code characters - using a mix of katakana, numbers, and symbols
+    const characters = '01234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ<>[]{}|=+*/-_$#@!?アイウエオカキクケコサシスセソタチツテトナニヌネノマミムメモヤユヨラリルレロワヰ';
+    const fontSize = 16;
     const columns = Math.floor(canvas.width / fontSize);
     
     // Array to track the y position of each drop
@@ -52,19 +52,36 @@ const MatrixCodeRain: React.FC<MatrixCodeRainProps> = ({
       ctx.fillStyle = `rgba(10, 15, 21, 0.1)`;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
       
-      // Set color and font
-      ctx.fillStyle = '#00BFFF'; // Using the site's accent color
-      ctx.font = `${fontSize}px monospace`;
-      ctx.shadowColor = '#00BFFF';
-      ctx.shadowBlur = 2;
-      
-      // Loop through drops
+      // Random characters with different brightnesses
       for (let i = 0; i < drops.length; i++) {
-        // Get random character
+        // Generate a random character
         const text = characters.charAt(Math.floor(Math.random() * characters.length));
         
-        // Draw the character
-        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+        // Make first character brighter for "head" effect
+        if (Math.floor(drops[i]) * fontSize < canvas.height && Math.floor(drops[i]) >= 0) {
+          // Head of the drop is brighter
+          ctx.fillStyle = '#00FFFF';
+          ctx.font = `bold ${fontSize}px monospace`;
+          ctx.shadowColor = '#00FFFF';
+          ctx.shadowBlur = 10;
+          ctx.fillText(text, i * fontSize, Math.floor(drops[i]) * fontSize);
+          
+          // Trail characters are dimmer
+          const trailLength = 20;
+          for (let j = 1; j < trailLength; j++) {
+            if (Math.floor(drops[i]) - j >= 0) {
+              // Calculate decreasing opacity for trail
+              const opacity = 1 - (j / trailLength);
+              ctx.fillStyle = `rgba(0, 191, 255, ${opacity})`;
+              ctx.font = `${fontSize - 1}px monospace`;
+              ctx.shadowBlur = 2;
+              
+              // Get a new random character for each position in the trail
+              const trailChar = characters.charAt(Math.floor(Math.random() * characters.length));
+              ctx.fillText(trailChar, i * fontSize, (Math.floor(drops[i]) - j) * fontSize);
+            }
+          }
+        }
         
         // Move drop down and reset when it reaches the bottom
         if (drops[i] * fontSize > canvas.height && Math.random() > 0.98) {
@@ -72,7 +89,7 @@ const MatrixCodeRain: React.FC<MatrixCodeRainProps> = ({
         }
         
         // Increment y coordinate
-        drops[i]++;
+        drops[i] += 0.5;
       }
     };
 
