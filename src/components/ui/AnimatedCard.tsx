@@ -7,16 +7,19 @@ interface AnimatedCardProps {
   children: React.ReactNode;
   glowEffect?: boolean;
   hoverEffect?: boolean;
+  style?: React.CSSProperties;
 }
 
 const AnimatedCard = ({ 
   className, 
   children, 
   glowEffect = false,
-  hoverEffect = false 
+  hoverEffect = false,
+  style
 }: AnimatedCardProps) => {
   return (
     <div
+      style={style}
       className={cn(
         "bg-mk-border/30 backdrop-blur-sm rounded-xl p-6 transition-all duration-300",
         glowEffect && "glow-border",
