@@ -1,6 +1,6 @@
 
 import React from "react";
-import { ShoppingBag, Link, MessageSquare, ArrowRight } from "lucide-react";
+import { ShoppingBag, Link, MessageSquare, Globe } from "lucide-react";
 import AnimatedCard from "./ui/AnimatedCard";
 import ButtonMk from "./ui/ButtonMk";
 import { useIsMobile } from "@/hooks/use-mobile";
@@ -38,6 +38,16 @@ const Products = () => {
       cta: "Quero ser avisado",
       ctaIcon: <MessageSquare className="w-4 h-4" />,
       available: false,
+    },
+    {
+      id: 4,
+      name: "Sites e Páginas Sob Medida",
+      description: "Criação de sites e sistemas personalizados",
+      icon: <Globe className="w-5 h-5 sm:w-6 sm:h-6 text-mk-accent" />,
+      features: ["Sites institucionais", "Landing pages", "Sistemas web"],
+      cta: "Quero criar meu site com a MK CODE",
+      ctaIcon: <Globe className="w-4 h-4" />,
+      available: true,
     },
   ];
 
