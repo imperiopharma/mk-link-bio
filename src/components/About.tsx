@@ -1,11 +1,10 @@
-
 import React from "react";
 import AnimatedCard from "./ui/AnimatedCard";
 import { Zap, Palette, LayoutList } from "lucide-react";
 
 const About = () => {
   return (
-    <section id="about" className="py-12 md:py-16 relative">
+    <section id="about" className="py-8 md:py-12 relative">
       <div className="section-container">
         <div className="text-center mb-10">
           <h2 className="text-3xl md:text-4xl font-bold mb-3 animate-fade-up opacity-0" style={{ animationFillMode: "forwards" }}>

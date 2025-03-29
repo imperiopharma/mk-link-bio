@@ -1,11 +1,10 @@
-
 import React from "react";
 import ButtonMk from "./ui/ButtonMk";
 import { MessageSquare } from "lucide-react";
 
 const CTASection = () => {
   return (
-    <section className="py-16 md:py-20 relative overflow-hidden">
+    <section className="py-12 md:py-16 relative overflow-hidden">
       <div className="section-container">
         <div className="max-w-3xl mx-auto text-center relative z-10">
           <h2 className="text-3xl md:text-4xl font-bold mb-6 animate-fade-up opacity-0" style={{ animationFillMode: "forwards" }}>

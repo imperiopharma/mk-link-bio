@@ -1,4 +1,3 @@
-
 import React from "react";
 import { ShoppingBag, Link, MessageSquare } from "lucide-react";
 import AnimatedCard from "./ui/AnimatedCard";
@@ -36,7 +35,7 @@ const Products = () => {
   ];
 
   return (
-    <section id="products" className="py-12 md:py-16 bg-gradient-to-b from-mk-bg to-mk-bg/95 relative">
+    <section id="products" className="py-8 md:py-12 bg-gradient-to-b from-mk-bg to-mk-bg/95 relative">
       <div className="section-container">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-3 animate-fade-up opacity-0" style={{ animationFillMode: "forwards" }}>

@@ -52,13 +52,13 @@ const Index = () => {
       <div className="relative">
         <div className="w-full h-0.5 bg-gradient-to-r from-transparent via-mk-border/20 to-transparent"></div>
         <About />
-        <div className="w-full h-0.5 bg-gradient-to-r from-transparent via-mk-border/20 to-transparent"></div>
+        <div className="w-full h-0.5 bg-gradient-to-r from-transparent via-mk-border/20 to-transparent mb-1"></div>
         <Products />
-        <div className="w-full h-0.5 bg-gradient-to-r from-transparent via-mk-border/20 to-transparent"></div>
+        <div className="w-full h-0.5 bg-gradient-to-r from-transparent via-mk-border/20 to-transparent mb-1"></div>
         <ForWhom />
-        <div className="w-full h-0.5 bg-gradient-to-r from-transparent via-mk-border/20 to-transparent"></div>
+        <div className="w-full h-0.5 bg-gradient-to-r from-transparent via-mk-border/20 to-transparent mb-1"></div>
         <Differentials />
-        <div className="w-full h-0.5 bg-gradient-to-r from-transparent via-mk-border/20 to-transparent"></div>
+        <div className="w-full h-0.5 bg-gradient-to-r from-transparent via-mk-border/20 to-transparent mb-1"></div>
         <CTASection />
       </div>
       <Footer />

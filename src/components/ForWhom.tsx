@@ -1,4 +1,3 @@
-
 import React from "react";
 import { CheckCircle } from "lucide-react";
 import AnimatedCard from "./ui/AnimatedCard";
@@ -14,7 +13,7 @@ const ForWhom = () => {
   ];
 
   return (
-    <section id="for-whom" className="py-12 md:py-16 relative">
+    <section id="for-whom" className="py-8 md:py-12 relative">
       <div className="section-container">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-3 animate-fade-up opacity-0" style={{ animationFillMode: "forwards" }}>
@@ -55,7 +54,6 @@ const ForWhom = () => {
         </AnimatedCard>
       </div>
 
-      {/* Elementos de fundo com opacidade melhorada */}
       <div className="absolute top-40 right-10 w-40 h-40 bg-mk-accent/20 rounded-full blur-[60px]"></div>
       <div className="absolute bottom-40 left-10 w-40 h-40 bg-mk-accent/20 rounded-full blur-[60px]"></div>
     </section>

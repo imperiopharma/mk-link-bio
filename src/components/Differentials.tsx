@@ -1,4 +1,3 @@
-
 import React from "react";
 import AnimatedCard from "./ui/AnimatedCard";
 import { Users, Palette, MessageSquare, DollarSign, HeadphonesIcon, Smartphone, TrendingUp } from "lucide-react";
@@ -43,7 +42,7 @@ const Differentials = () => {
   ];
 
   return (
-    <section id="differentials" className="py-12 md:py-16 bg-gradient-to-b from-mk-bg/95 to-mk-bg relative">
+    <section id="differentials" className="py-8 md:py-12 bg-gradient-to-b from-mk-bg/95 to-mk-bg relative">
       <div className="section-container">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-3 animate-fade-up opacity-0" style={{ animationFillMode: "forwards" }}>
