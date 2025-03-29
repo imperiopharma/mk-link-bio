@@ -30,7 +30,7 @@ const Hero = () => {
               variant="outline" 
               size={isMobile ? "md" : "lg"} 
               icon={<MessageSquare className="w-4 h-4" />}
-              className="w-full sm:w-auto mt-2 sm:mt-0"
+              className="w-full sm:w-auto mt-2 sm:mt-0 text-white hover:text-black"
             >
               Falar com a MK CODE
             </ButtonMk>
