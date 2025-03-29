@@ -55,6 +55,8 @@ const MatrixCodeRain: React.FC<MatrixCodeRainProps> = ({
       // Set color and font
       ctx.fillStyle = '#00BFFF'; // Using the site's accent color
       ctx.font = `${fontSize}px monospace`;
+      ctx.shadowColor = '#00BFFF';
+      ctx.shadowBlur = 2;
       
       // Loop through drops
       for (let i = 0; i < drops.length; i++) {
