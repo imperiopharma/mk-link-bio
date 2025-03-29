@@ -1,7 +1,7 @@
 
 import React from "react";
 import AnimatedCard from "./ui/AnimatedCard";
-import { Zap, Palette, LayoutList } from "lucide-react";
+import { Zap, Palette, LayoutList, Globe } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 
 const About = () => {
@@ -22,12 +22,16 @@ const About = () => {
             A MK CODE é uma empresa de automações e tecnologia que existe pra 
             <span className="text-gradient font-medium"> melhorar a vida de quem empreende</span>.
           </p>
-          <p className="text-base sm:text-lg text-center leading-relaxed">
+          <p className="text-base sm:text-lg text-center leading-relaxed mb-4">
             Criamos ferramentas que ajudam desde quem tá começando até empresas já consolidadas
             — com foco em loja, atendimento e experiência real do cliente.
           </p>
+          <p className="text-base sm:text-lg text-center leading-relaxed font-medium">
+            <span className="text-gradient">Construímos qualquer tipo de site ou plataforma sob encomenda</span>, 
+            sempre com a sua identidade e necessidades específicas em mente.
+          </p>
 
-          <div className="mt-6 sm:mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 sm:gap-6">
+          <div className="mt-6 sm:mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5 sm:gap-6">
             <div className="text-center animate-fade-up opacity-0" style={{ animationDelay: "0.3s", animationFillMode: "forwards" }}>
               <div className="w-14 h-14 sm:w-16 sm:h-16 bg-mk-border/30 rounded-full flex items-center justify-center mx-auto mb-3">
                 <Zap className="w-6 h-6 sm:w-8 sm:h-8 text-mk-accent" />
@@ -44,12 +48,20 @@ const About = () => {
               <p className="text-sm text-mk-muted">Visual personalizado</p>
             </div>
             
-            <div className="text-center animate-fade-up opacity-0 sm:col-span-2 md:col-span-1 sm:max-w-xs sm:mx-auto md:max-w-none" style={{ animationDelay: "0.5s", animationFillMode: "forwards" }}>
+            <div className="text-center animate-fade-up opacity-0" style={{ animationDelay: "0.5s", animationFillMode: "forwards" }}>
               <div className="w-14 h-14 sm:w-16 sm:h-16 bg-mk-border/30 rounded-full flex items-center justify-center mx-auto mb-3">
                 <LayoutList className="w-6 h-6 sm:w-8 sm:h-8 text-mk-accent" />
               </div>
               <h3 className="font-semibold mb-1">Simplicidade</h3>
               <p className="text-sm text-mk-muted">Fácil de usar</p>
+            </div>
+            
+            <div className="text-center animate-fade-up opacity-0" style={{ animationDelay: "0.6s", animationFillMode: "forwards" }}>
+              <div className="w-14 h-14 sm:w-16 sm:h-16 bg-mk-border/30 rounded-full flex items-center justify-center mx-auto mb-3">
+                <Globe className="w-6 h-6 sm:w-8 sm:h-8 text-mk-accent" />
+              </div>
+              <h3 className="font-semibold mb-1">Sob encomenda</h3>
+              <p className="text-sm text-mk-muted">Projetos personalizados</p>
             </div>
           </div>
         </AnimatedCard>
